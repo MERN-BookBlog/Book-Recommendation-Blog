@@ -1,0 +1,29 @@
+{
+  "name": "book-recommendation-blog",
+  "version": "1.0.0",
+  "description": "Book Recommendation Blog (MERN Stack) A full-stack blog where users can explore, review, and recommend books. Features include authentication, book ratings, search, and an admin panel. Built with React, Node.js, Express, and MongoDB and Machine Learning models",
+  "homepage": "https://github.com/MERN-BookBlog/Book-Recommendation-Blog#readme",
+  "bugs": {
+    "url": "https://github.com/MERN-BookBlog/Book-Recommendation-Blog/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MERN-BookBlog/Book-Recommendation-Blog.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.14.0"
+  }
+}
