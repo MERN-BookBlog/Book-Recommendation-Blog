@@ -1,10 +1,12 @@
-const jwt = require('jsonwebtoken');
+import jwt from "jsonwebtoken";
 
 const authMiddleware = (req, res, next) => {
   const token = req.cookies?.Auth_token;
 
   if (!token) {
-    return res.status(401).json({ message: 'Unauthorized: No token found in cookies.' });
+    return res
+      .status(401)
+      .json({ message: "Unauthorized: No token found in cookies." });
   }
 
   try {
@@ -12,8 +14,10 @@ const authMiddleware = (req, res, next) => {
     req.user = decoded; // Attaches decoded user info to the request
     next(); // Proceeds to the next middleware or route handler
   } catch (err) {
-    return res.status(401).json({ message: 'Unauthorized: Invalid or expired token.' });
+    return res
+      .status(401)
+      .json({ message: "Unauthorized: Invalid or expired token." });
   }
 };
 
-module.exports = authMiddleware;
+export default authMiddleware;

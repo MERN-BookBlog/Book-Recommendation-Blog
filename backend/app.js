@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // routes
-app.use("/", authRoutes);
+app.use("/auth", authRoutes);
 
 //starts a server
 app.listen(PORT, () => {
