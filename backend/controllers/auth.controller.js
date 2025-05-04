@@ -1,10 +1,34 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-
+const JWT_SECRET = process.env.JWT_SECRET;
 export const testController = async (req, res) => {
   res.send("Backend is running ");
 };
+
+ 
+ export const signupController = async (req, res) => {
+   const { username, email, password } = req.body;
+ 
+   try {
+     const existingUser = await User.findOne({ email });
+     if (existingUser) return res.status(400).json({ success: false, errors: "Email already registered" });
+ 
+     const hashedPassword = await bcrypt.hash(password, 10);
+ 
+     const newUser = new User({ username, email, password: hashedPassword });
+     await newUser.save();
+ 
+     const token = jwt.sign({ userId: newUser._id, email: newUser.email }, JWT_SECRET, { expiresIn: "1h" });
+ 
+     res.status(201).json({ success: true, token });
+   } catch (err) {
+     res.status(500).json({ success: false, errors: "Server error" });
+   }
+ };
+
+
+
 export const getProfile = async (req, res) => {
    try {
      // const user = await User.findById(req.user._id).select("-password");
