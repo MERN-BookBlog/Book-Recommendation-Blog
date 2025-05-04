@@ -4,10 +4,10 @@ const router = express.Router();
 
 router.get("/", testController);
 
-// 📝 Signup route
+//  Signup route
 router.post("/signup", signupController);
 
-// 🔐 Login route
+//  Login route
 router.post("/login", loginController);
 
 export default router;
