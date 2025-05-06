@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-const JWT_SECRET = process.env.JWT_SECRET;
+import { generateTokenAndSetCookie } from "../utils/generateToken.js";
+
 export const testController = async (req, res) => {
   res.send("Backend is running ");
 };
@@ -19,16 +19,14 @@ export const signupController = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({ username, email, password: hashedPassword });
-    await newUser.save();
+    if (newUser) {
+      generateTokenAndSetCookie(newUser._id, res);
+      await newUser.save();
+    }
 
-    const token = jwt.sign(
-      { userId: newUser._id, email: newUser.email },
-      JWT_SECRET,
-      { expiresIn: "1h" }
-    );
-
-    res.status(201).json({ success: true, token });
+    res.status(201).json({ success: true, newUser });
   } catch (err) {
+    console.log("Error in Signup Controller : ", err);
     res.status(500).json({ success: false, errors: "Server error" });
   }
 };
@@ -47,22 +45,28 @@ export const loginController = async (req, res) => {
         .status(401)
         .json({ success: false, errors: "Invalid credentials" });
 
-    const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      JWT_SECRET,
-      { expiresIn: "1h" }
-    );
+    generateTokenAndSetCookie(user._id, res);
 
-    res.status(200).json({ success: true, token });
+    res.status(200).json({ success: true, message: "Login successfully !" });
   } catch (err) {
+    console.log("Error in loginController : ", err.message);
     res.status(500).json({ success: false, errors: "Server error" });
   }
 };
 
+export const logout = async (req, res) => {
+  try {
+    res.cookie("Auth_token", "", { maxAge: 0 });
+    res.status(200).json({ message: "Logged out Successfully !" });
+  } catch (err) {
+    console.log("Error in Logout Controller: ", err.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 export const getProfile = async (req, res) => {
   try {
-    // const user = await User.findById(req.user._id).select("-password");
-    res.status(200).json(req.user);
+    const user = await User.findById(req.user.userId).select("-password");
+    res.status(200).json(user);
   } catch (err) {
     console.log("Error in getProfile controller : ", err.message);
     res.status(500).json("Internal Server Error ");
