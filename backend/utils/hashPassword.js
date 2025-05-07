@@ -1,9 +1,9 @@
-import bcrypt from "bcryptjs";
+import { hash } from 'bcrypt';
+const SALT_ROUNDS = 12;
 
-const hashPassword = async (plainPassword) => {
-  const salt = await bcrypt.genSalt(10);
-  const hashed = await bcrypt.hash(plainPassword, salt);
-  return hashed;
-};
+async function hashPassword(plainPassword) {
+  if (!plainPassword) throw new Error('No password provided');
+  return await hash(plainPassword, SALT_ROUNDS);
+}
 
 export default hashPassword;
