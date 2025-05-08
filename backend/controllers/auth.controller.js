@@ -16,7 +16,8 @@ export const signupController = async (req, res) => {
         .status(400)
         .json({ success: false, errors: "Email already registered" });
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    //const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await hashPassword(password); // Use the helper function
 
     const newUser = new User({ username, email, password: hashedPassword });
     if (newUser) {
@@ -63,6 +64,7 @@ export const logout = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 export const getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.userId).select("-password");
