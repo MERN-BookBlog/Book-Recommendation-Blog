@@ -28,7 +28,7 @@ export const signupController = async (req, res) => {
     res.status(201).json({ success: true, newUser });
   } catch (err) {
     console.log("Error in Signup Controller : ", err);
-    res.status(500).json({ success: false, errors: "Server error" });
+    res.status(500).json({ success: false, error: "Server error" });
   }
 };
 
@@ -61,7 +61,7 @@ export const logout = async (req, res) => {
     res.status(200).json({ message: "Logged out Successfully !" });
   } catch (err) {
     console.log("Error in Logout Controller: ", err.message);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ success: false, error: " Internal Server Error" });
   }
 };
 
@@ -71,6 +71,15 @@ export const getProfile = async (req, res) => {
     res.status(200).json(user);
   } catch (err) {
     console.log("Error in getProfile controller : ", err.message);
-    res.status(500).json("Internal Server Error ");
+    res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
+};
+
+export const updateProfile = async (req, res) => {
+  try {
+    res.send("Update route ");
+  } catch (err) {
+    console.log("Error in updateProfile controller : ", err.message);
+    res.status(500).json({ success: false, error: "Internal Sever Error " });
   }
 };

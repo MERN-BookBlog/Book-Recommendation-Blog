@@ -5,6 +5,7 @@ import {
   logout,
   loginController,
   getProfile,
+  updateProfile,
 } from "../controllers/auth.controller.js";
 import authMiddleware from "../middlewares/auth.middleware.js";
 const router = express.Router();
@@ -20,4 +21,7 @@ router.post("/login", loginController);
 
 // Log out route
 router.post("/logout", logout);
+
+// update route
+router.post("/profile", authMiddleware, updateProfile);
 export default router;
