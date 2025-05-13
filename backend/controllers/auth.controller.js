@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { generateTokenAndSetCookie } from "../utils/generateToken.js";
+import hashPassword from "../utils/hashPassword.js";
 
 export const testController = async (req, res) => {
   res.send("Backend is running ");
@@ -77,9 +78,50 @@ export const getProfile = async (req, res) => {
 
 export const updateProfile = async (req, res) => {
   try {
-    res.send("Update route ");
+    const { username, email, currentPassword, newPassword } = req.body;
+    const userId = req.user.userId;
+    let user = await User.findById(userId).select("+password");
+
+    if (!user) {
+      return res.status(400).json({ error: "User not found ! " });
+    }
+
+    if (
+      (!currentPassword && newPassword) ||
+      (!newPassword && currentPassword)
+    ) {
+      return res
+        .status(400)
+        .json({ error: "Provide both current password & new password ! " });
+    }
+
+    if (currentPassword && newPassword) {
+      const isMatch = await bcrypt.compare(currentPassword, user.password);
+      if (!isMatch) {
+        return res.status(400).json({ error: "current Password incorrect ! " });
+      }
+
+      if (newPassword.length < 6) {
+        return res.status(400).json({
+          error: "New Password must be  atleast 6 character long ! ",
+        });
+      }
+      // hased the password
+
+      user.password = await hashPassword(newPassword);
+    }
+
+    user.username = username || user.username;
+    user.email = email || user.email;
+
+    user = await user.save();
+    user.password = null;
+
+    res
+      .status(200)
+      .json({ success: true, message: "User updated successfully!", user });
   } catch (err) {
     console.log("Error in updateProfile controller : ", err.message);
-    res.status(500).json({ success: false, error: "Internal Sever Error " });
+    res.status(500).json({ success: false, error: "Internal Sever Error" });
   }
 };
