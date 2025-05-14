@@ -22,8 +22,6 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Please provide a password"],
-      minlength: 6,
-      select: false, // Don't return password by default in queries
     },
     preferences: {
       type: [String], // Array of strings for book preferences
