@@ -1,9 +1,11 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+
 import connectDB from "./config/dbs.js";
 import authRoutes from "./routes/auth.routes.js";
-import cookieParser from "cookie-parser";
+import bookRoutes from "./routes/book.routes.js";
 
 dotenv.config();
 const app = express();
@@ -16,6 +18,7 @@ app.use(express.json());
 
 // routes
 app.use("/auth", authRoutes);
+app.use("/book", bookRoutes);
 
 //starts a server
 app.listen(PORT, () => {
