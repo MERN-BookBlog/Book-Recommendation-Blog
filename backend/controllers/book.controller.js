@@ -76,3 +76,37 @@ export const getBookById = async (req, res) => {
     });
   }
 };
+
+export const getAllBooks = async (req, res) => {
+  try {
+    const { genre, author, title } = req.query;
+
+    let filter = {};
+
+    if (genre) {
+      filter.genre = { $regex: genre, $options: "i" }; // case-insensitive partial match
+    }
+
+    if (author) {
+      filter.author = { $regex: author, $options: "i" };
+    }
+
+    if (title) {
+      filter.title = { $regex: title, $options: "i" };
+    }
+
+    const books = await Book.find(filter);
+
+    res.status(200).json({
+      success: true,
+      count: books.length,
+      data: books,
+    });
+  } catch (err) {
+    console.error("Error in getAllBooks Controller:", err.message);
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
+};
