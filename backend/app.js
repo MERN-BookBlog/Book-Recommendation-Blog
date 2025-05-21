@@ -20,8 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // routes
 app.use("/auth", authRoutes);
-app.use("/book", bookRoutes);
-app.use("/review", reviewRoutes);
+app.use("/books", bookRoutes);
+app.use("/reviews", reviewRoutes);
 
 //starts a server
 app.listen(PORT, () => {
