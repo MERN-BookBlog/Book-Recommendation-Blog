@@ -1,4 +1,5 @@
 import Book from "../models/book.model.js";
+import User from "../models/user.model.js";
 
 export const addBook = async (req, res) => {
   try {
@@ -104,6 +105,39 @@ export const getAllBooks = async (req, res) => {
     });
   } catch (err) {
     console.error("Error in getAllBooks Controller:", err.message);
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
+};
+
+export const getPersonalizedBooks = async (req, res) => {
+  try {
+    const userId = req.params.userId || req.user.userId;
+
+    // Fetch user's preferences
+    const user = await User.findById(userId);
+
+    if (!user)
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    const { preferredGenres, preferredAuthors } = user;
+    const genres = preferredGenres || [];
+    const authors = preferredAuthors || [];
+
+    // Match books with either genre or author
+    const matchedBooks = await Book.find({
+      $or: [{ genre: { $in: genres } }, { author: { $in: authors } }],
+    });
+
+    res.status(200).json({
+      success: true,
+      data: matchedBooks,
+    });
+  } catch (err) {
+    console.error("Error in getPersonalizedBooks Controller:", err.message);
     res.status(500).json({
       success: false,
       message: "Internal Server Error",

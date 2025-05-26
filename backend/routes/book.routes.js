@@ -4,6 +4,7 @@ import {
   addBook,
   getBookById,
   getAllBooks,
+  getPersonalizedBooks,
 } from "../controllers/book.controller.js";
 
 const router = express.Router();
@@ -11,4 +12,5 @@ const router = express.Router();
 router.post("/create", authMiddleware, addBook);
 router.get("/all", authMiddleware, getAllBooks);
 router.get("/:id", authMiddleware, getBookById);
+router.get("/recommendations/:userId", authMiddleware, getPersonalizedBooks);
 export default router;
