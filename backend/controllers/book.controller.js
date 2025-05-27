@@ -144,3 +144,43 @@ export const getPersonalizedBooks = async (req, res) => {
     });
   }
 };
+
+export const getTopRatedBooks = async (req, res) => {
+  try {
+    const { genre, author, title } = req.query;
+    const limit = parseInt(req.query.limit) || 10;
+
+    let filter = {};
+
+    if (genre) {
+      filter.genre = { $regex: genre, $options: "i" };
+    }
+
+    if (author) {
+      filter.author = { $regex: author, $options: "i" };
+    }
+
+    if (title) {
+      filter.title = { $regex: title, $options: "i" };
+    }
+
+    // Only include books that have at least one rating
+    filter.totalRatings = { $gt: 0 };
+
+    const books = await Book.find(filter)
+      .sort({ averageRating: -1, totalRatings: -1 })
+      .limit(limit);
+
+    res.status(200).json({
+      success: true,
+      count: books.length,
+      data: books,
+    });
+  } catch (err) {
+    console.error("Error in getTopRatedBooks Controller:", err.message);
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
+};
