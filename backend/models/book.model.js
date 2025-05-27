@@ -29,6 +29,16 @@ const bookSchema = new mongoose.Schema(
       type: Number,
       min: 0,
     },
+    averageRating: {
+      type: Number,
+      default: 0,
+      min: 0,
+      max: 5,
+    },
+    totalRatings: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true }
 );
