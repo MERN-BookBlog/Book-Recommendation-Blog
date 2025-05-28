@@ -1,4 +1,5 @@
 import Review from "../models/review.model.js";
+import Book from "../models/book.model.js";
 
 export const addReview = async (req, res) => {
   try {
@@ -6,6 +7,21 @@ export const addReview = async (req, res) => {
 
     const newReview = new Review({ rating, comment, userId, bookId });
     await newReview.save();
+
+    // Calculate new average rating for the book
+    const bookReviews = await Review.find({ bookId });
+    const totalRatings = bookReviews.length;
+    const sumRatings = bookReviews.reduce(
+      (sum, review) => sum + review.rating,
+      0
+    );
+    const averageRating = sumRatings / totalRatings;
+
+    // Update book with new average rating
+    await Book.findByIdAndUpdate(bookId, {
+      averageRating,
+      totalRatings,
+    });
 
     res
       .status(201)
