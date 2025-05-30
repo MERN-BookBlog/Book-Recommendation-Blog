@@ -29,6 +29,8 @@ app.use("/auth", authRoutes);
 app.use("/books", bookRoutes);
 app.use("/reviews", reviewRoutes);
 
+app.use('/recommendations', recommendationRouter);
+
 //starts a server
 app.listen(PORT, () => {
   console.log("Server is running on", PORT);
