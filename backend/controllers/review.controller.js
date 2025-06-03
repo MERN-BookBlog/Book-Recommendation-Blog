@@ -23,6 +23,8 @@ export const addReview = async (req, res) => {
       totalRatings,
     });
 
+    // Add notification here !!
+
     res
       .status(201)
       .json({ message: "Review added successfully", review: newReview });
