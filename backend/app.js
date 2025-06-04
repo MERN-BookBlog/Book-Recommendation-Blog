@@ -3,11 +3,12 @@ import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
+import "./utils/cronJobs.js";
 import connectDB from "./config/dbs.js";
 import authRoutes from "./routes/auth.routes.js";
 import bookRoutes from "./routes/book.routes.js";
 import reviewRoutes from "./routes/review.routes.js";
-
+import notificationRoutes from "./routes/notification.routes.js";
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/auth", authRoutes);
 app.use("/books", bookRoutes);
 app.use("/reviews", reviewRoutes);
+app.use("/notification", notificationRoutes);
 
 app.use('/recommendations', recommendationRouter);
 
