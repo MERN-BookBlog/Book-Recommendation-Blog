@@ -1,11 +1,16 @@
 import Review from "../models/review.model.js";
 import Book from "../models/book.model.js";
-
+import { sendNotification } from "../utils/sendNotification.js";
 export const addReview = async (req, res) => {
   try {
-    const { rating, comment, userId, bookId } = req.body;
+    const { rating, comment, bookId } = req.body;
 
-    const newReview = new Review({ rating, comment, userId, bookId });
+    const newReview = new Review({
+      rating,
+      comment,
+      userId: req.user.userId,
+      bookId,
+    });
     await newReview.save();
 
     // Calculate new average rating for the book
@@ -18,12 +23,19 @@ export const addReview = async (req, res) => {
     const averageRating = sumRatings / totalRatings;
 
     // Update book with new average rating
-    await Book.findByIdAndUpdate(bookId, {
+    const book = await Book.findByIdAndUpdate(bookId, {
       averageRating,
       totalRatings,
     });
 
     // Add notification here !!
+    await sendNotification({
+      type: "new_review",
+      message: `📣 Your have successfully review the book named "${book.title} ! " `,
+      to: req.user.userId,
+      from: null,
+      bookId,
+    });
 
     res
       .status(201)
