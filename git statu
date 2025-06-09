@@ -1,0 +1,236 @@
+[33mcommit d9cacf8906b77a2325d43c3250588a18538f4758[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Anjali Tomar <anjali.theaj3366@gmail.com>
+Date:   Sat Jun 7 23:03:24 2025 +0530
+
+    Add notification Code & resolve the minor issue
+
+[33mcommit 1d8c2045560c671cb5433a0c8b426b0f676083bd[m
+Author: Anjali Tomar <anjali.theaj3366@gmail.com>
+Date:   Tue Jun 3 15:06:19 2025 +0530
+
+    add notification model and all related routes with cron functionality
+
+[33mcommit dae15880304f037883ba782acdfd4c702f42b9de[m
+Merge: 99f6d33 abb37c6
+Author: Ekshith Pakala <158220641+Ekshith-P@users.noreply.github.com>
+Date:   Wed May 28 12:49:28 2025 +0530
+
+    Added feature "Return top rated books from matched results"
+    
+    Pr
+
+[33mcommit abb37c67a71bbec5857df9cac09f462404b9f91e[m[33m ([m[1;31morigin/feature/rating-sort[m[33m, [m[1;32mfeature/rating-sort[m[33m)[m
+Author: Ekshith5002 <ekshithpakala@gmail.com>
+Date:   Tue May 27 17:36:37 2025 +0530
+
+    Added feature "Return top rated books from matched results"
+    :wq
+
+[33mcommit 99f6d3369ffaf19ca644119a6f10fd999397d327[m
+Merge: 33d3959 2840369
+Author: Ekshith Pakala <158220641+Ekshith-P@users.noreply.github.com>
+Date:   Wed May 28 12:39:53 2025 +0530
+
+    Added feature "Return top rated books from matched results"
+    
+    Feature/rating sort
+    Merge pull request #3 from MERN-BookBlog/feature/rating-sort
+
+[33mcommit 2840369024324720056585e62dce0f03ecb55331[m
+Author: Ekshith5002 <ekshithpakala@gmail.com>
+Date:   Tue May 27 17:36:37 2025 +0530
+
+    feat: Add backend server setup with Express and MongoDB
+    Added feature "Return top rated books from matched results"
+    Added feature "Return top rated books from matched results"
+    :wq
+
+[33mcommit 107a5715cba8fc58cf6ca6259849760c6a3e1f64[m
+Author: Ekshith5002 <ekshithpakala@gmail.com>
+Date:   Tue May 27 17:36:22 2025 +0530
+
+    Initial commit: Add .gitignore file
+
+[33mcommit 33d395941934a5ece3d972cfae48497701daa7a1[m
+Author: Kushagra Anand <kushagranand12345@gmail.com>
+Date:   Tue May 27 16:43:32 2025 +0530
+
+    Created utility to sort/filter books based on average ratings
+
+[33mcommit b1b30986afb54e857bc6eebe1f9a4cf3d2deb31b[m
+Author: Anjali Tomar <anjali.theaj3366@gmail.com>
+Date:   Mon May 26 23:32:42 2025 +0530
+
+    Add /recommendations route for fetching personalized books
+
+[33mcommit f165028c1a71455838f4b99ac8c7082a355ad344[m
+Author: Anjali Tomar <anjali.theaj3366@gmail.com>
+Date:   Wed May 21 16:16:25 2025 +0530
+
+    create getReviewByBookId controller for fetching reviews
+
+[33mcommit 14b0e203b6116928a3f714166637290c6740c772[m
+Author: Anjali Tomar <anjali.theaj3366@gmail.com>
+Date:   Wed May 21 15:51:49 2025 +0530
+
+    create getAllBooks route with optional filters
+
+[33mcommit dc1a1cbdee9ca338dbaa7657762bd98695c470a6[m
+Merge: f627cfb 2adda5a
+Author: Lucky Paswan <luckypaswan745@gmail.com>
+Date:   Sat May 17 15:34:20 2025 +0530
+
+    Merge pull request #2 from MERN-BookBlog/feature/review-route
+    
+    Add Review Route and Controller. also Apply token verification for protected routes
+
+[33mcommit 2adda5ae7b1fad063dc3b66529ed0bc5566f8769[m[33m ([m[1;31morigin/feature/review-route[m[33m, [m[1;32mfeature/review-route[m[33m)[m
+Author: Lucky7649 <luckypaswan745@gmail.com>
+Date:   Sat May 17 15:20:27 2025 +0530
+
+    Added review route
+
+[33mcommit f627cfb598e2a44d798d01d8d15f71a773aeb404[m
+Author: [Anjali Tomar] <[anjali.theaj3366@gmail.com]>
+Date:   Sat May 17 13:48:23 2025 +0530
+
+    add controllers to create a book and fetch book by ID
+
+[33mcommit d3e8610a8c9c37135ce92da88671b038502fb3b7[m
+Author: AYESHA FATIMA <156108532+Techie-AyeshaFatima@users.noreply.github.com>
+Date:   Wed May 14 13:23:48 2025 +0530
+
+    Updated user.model.js
+
+[33mcommit e279e2f9cd3cec53e20061f9e0645967629291b1[m
+Author: [Anjali Tomar] <[anjali.theaj3366@gmail.com]>
+Date:   Tue May 13 23:31:47 2025 +0530
+
+    Add update profile route & install necessary package
+
+[33mcommit c528060f6f1f94c460e91cb3a1c97f7049c1f7cd[m
+Author: [Anjali Tomar] <[anjali.theaj3366@gmail.com]>
+Date:   Sat May 10 16:09:17 2025 +0530
+
+    replace require statement to import statement
+
+[33mcommit e2ecdf46b91aa2120316a0d6b048947c6371fd2e[m
+Author: [Anjali Tomar] <[anjali.theaj3366@gmail.com]>
+Date:   Sat May 10 16:03:40 2025 +0530
+
+    Add review model
+
+[33mcommit 5f87d14e5a60eb2aa6794581c3d20ac98da4a2bf[m
+Author: [Anjali Tomar] <[anjali.theaj3366@gmail.com]>
+Date:   Fri May 9 01:39:35 2025 +0530
+
+    Create Book model
+
+[33mcommit 79eb513645e07854bfb467f72019ddb58ba5bf30[m
+Author: Techie-AyeshaFatima <ayeshafatima.techie@gmail.com>
+Date:   Thu May 8 13:02:38 2025 +0530
+
+    1. updated User Model(user.model.js): added username, preferences, pastReads and favoriteAuthors fields
+    2. updated signupController(auth.controller.js): changed hashedPassword function.
+
+[33mcommit 72acfce099b512475220de35805f55b2d5b365d1[m
+Author: saisaranyam <saisaranyamyla2005@gmail.com>
+Date:   Wed May 7 15:24:15 2025 +0530
+
+    Update hashPassword.js
+
+[33mcommit a5a3a2dd84c1a921320f2b59f266ba30e36d12dc[m
+Author: [Anjali Tomar] <[anjali.theaj3366@gmail.com]>
+Date:   Wed May 7 00:43:24 2025 +0530
+
+    update profile functionality and add logout functionality with mongoDB connection
+
+[33mcommit e34438dac8294a011cbc961a244e804bc01de9c7[m
+Author: Anjali <160884550+Anjali3366@users.noreply.github.com>
+Date:   Tue May 6 23:27:53 2025 +0530
+
+    Add MongoDB connection String
+
+[33mcommit d020433a5eefe863563c8f15e8614b44d7d065bb[m
+Author: [Anjali Tomar] <[anjali.theaj3366@gmail.com]>
+Date:   Mon May 5 00:00:02 2025 +0530
+
+    Update auth.routes.js
+
+[33mcommit 82968374dc935cbfdd431a5e2385989f20378b0b[m
+Author: Anjali <160884550+Anjali3366@users.noreply.github.com>
+Date:   Sun May 4 23:47:55 2025 +0530
+
+    Resolve conflicts
+
+[33mcommit c52c1b3d13ac246a5e1ce19b9ae9123a0b670162[m
+Author: Anjali <160884550+Anjali3366@users.noreply.github.com>
+Date:   Sun May 4 23:46:04 2025 +0530
+
+    Update auth.controller.js
+
+[33mcommit 086db79a69fa7d8d7d2fb0cc579728b743395f5e[m
+Author: Anjali <160884550+Anjali3366@users.noreply.github.com>
+Date:   Sun May 4 23:43:12 2025 +0530
+
+    Add getProfile controller
+
+[33mcommit 52e7babea8358b8bab84219eaa0e29a1181fbdec[m
+Merge: a07f455 4898455
+Author: [Anjali Tomar] <[anjali.theaj3366@gmail.com]>
+Date:   Sun May 4 23:31:40 2025 +0530
+
+    Merge branch 'main' of https://github.com/MERN-BookBlog/Book-Recommendation-Blog
+
+[33mcommit a07f455b4552cdca3950e2415a68971a480fb7f5[m
+Author: [Anjali Tomar] <[anjali.theaj3366@gmail.com]>
+Date:   Sun May 4 23:29:58 2025 +0530
+
+    add GET /profile route to fetch user profile data
+
+[33mcommit 4898455c5be45181f2ce26315ac29163729a1a51[m
+Author: Aastha <87687047+Aastha510@users.noreply.github.com>
+Date:   Sun May 4 22:19:42 2025 +0530
+
+    Update auth.routes.js
+
+[33mcommit d9e84b2bcbda26f1337667e0da9d965e6fee9d8d[m
+Author: Aastha <agrh510@gmail.com>
+Date:   Sun May 4 22:18:32 2025 +0530
+
+    Added login/signup routes
+
+[33mcommit 5345d5e93c520f6f17724510f03a4e2c40a63d5b[m
+Author: saisaranyam <saisaranyamyla2005@gmail.com>
+Date:   Thu May 1 12:54:50 2025 +0530
+
+    Create hashPassword.js
+
+[33mcommit 116bab920d1a8f4c82acec1e226c57660b01a4c7[m
+Merge: b735921 9488c21
+Author: PranavJadhav2006 <pranavjadhav1319@gmail.com>
+Date:   Wed Apr 30 23:28:20 2025 +0530
+
+    Merge pull request #1 from MERN-BookBlog/feature/verify-tokens
+    
+    create token varification middleware
+
+[33mcommit 9488c2146c6afc627dae45ff2e9feac6f3a3c9b0[m[33m ([m[1;31morigin/feature/verify-tokens[m[33m, [m[1;32mfeature/verify-tokens[m[33m)[m
+Author: Lucky7649 <luckypaswan745@gmail.com>
+Date:   Wed Apr 30 23:16:16 2025 +0530
+
+    create token varification middleware
+
+[33mcommit b735921c87becda540a292fffd9b231b0e8baeea[m
+Author: [Anjali Tomar] <[anjali.theaj3366@gmail.com]>
+Date:   Mon Apr 28 18:34:25 2025 +0530
+
+    refactor: clean up messy code after rushed commit
+
+[33mcommit 8d096770430a2363509d74e3713b47c6a15ed65a[m
+Author: Anjali <160884550+Anjali3366@users.noreply.github.com>
+Date:   Mon Apr 28 18:13:44 2025 +0530
+
+    Update .env
+
+[33mco

@@ -37,6 +37,12 @@ const userSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
+    favorites: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Book",
+      },
+    ],
   },
   {
     timestamps: true, // Automatically adds createdAt and updatedAt fields
