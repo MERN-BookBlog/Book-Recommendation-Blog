@@ -2,8 +2,8 @@ import express from "express";
 import {
   addBookToReadingList,
   getAllReadingListsForUser,
-} from "../controllers/readingListController.js";
-import { authenticateUser } from "../middleware/authMiddleware.js";
+} from "../controllers/readingList.controller.js";
+import { authenticateUser } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 

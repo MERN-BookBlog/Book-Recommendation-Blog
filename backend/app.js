@@ -10,6 +10,7 @@ import bookRoutes from "./routes/book.routes.js";
 import reviewRoutes from "./routes/review.routes.js";
 import notificationRoutes from "./routes/notification.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import recommendationRoutes from "./routes/readingList.routes.js";
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -33,7 +34,7 @@ app.use("/user", userRoutes);
 app.use("/reviews", reviewRoutes);
 app.use("/notification", notificationRoutes);
 
-app.use('/recommendations', recommendationRouter);
+app.use("/recommendations", recommendationRoutes);
 
 //starts a server
 app.listen(PORT, () => {

@@ -1,12 +1,9 @@
-import User from "../models/user.js";
+import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 
 import { generateTokenAndSetCookie } from "../utils/generateToken.js";
 import hashPassword from "../utils/hashPassword.js";
 import { sendNotification } from "../utils/sendNotification.js";
-export const testController = async (req, res) => {
-  res.send("Backend is running ");
-};
 
 export const signupController = async (req, res) => {
   const { username, email, password } = req.body;

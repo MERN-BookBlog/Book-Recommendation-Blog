@@ -1,6 +1,5 @@
 import express from "express";
 import {
-  testController,
   signupController,
   logout,
   loginController,
@@ -10,7 +9,6 @@ import {
 import authMiddleware from "../middlewares/auth.middleware.js";
 const router = express.Router();
 
-router.get("/", testController);
 router.get("/profile", authMiddleware, getProfile);
 
 //  Signup route

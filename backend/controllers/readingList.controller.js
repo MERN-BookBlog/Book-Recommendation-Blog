@@ -1,4 +1,4 @@
-import ReadingList from "../models/readingList.js";
+import ReadingList from "../models/readingList.model.js";
 
 // POST /reading-list
 export const addBookToReadingList = async (req, res) => {
@@ -6,7 +6,9 @@ export const addBookToReadingList = async (req, res) => {
     const { listId, bookId } = req.body;
 
     if (!listId || !bookId) {
-      return res.status(400).json({ message: "listId and bookId are required." });
+      return res
+        .status(400)
+        .json({ message: "listId and bookId are required." });
     }
 
     const readingList = await ReadingList.findOne({
@@ -23,7 +25,9 @@ export const addBookToReadingList = async (req, res) => {
       await readingList.save();
     }
 
-    res.status(200).json({ message: "Book added to reading list.", readingList });
+    res
+      .status(200)
+      .json({ message: "Book added to reading list.", readingList });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
@@ -32,7 +36,9 @@ export const addBookToReadingList = async (req, res) => {
 // GET /reading-lists
 export const getAllReadingListsForUser = async (req, res) => {
   try {
-    const lists = await ReadingList.find({ user: req.user._id }).populate("books");
+    const lists = await ReadingList.find({ user: req.user._id }).populate(
+      "books"
+    );
 
     res.status(200).json(lists);
   } catch (error) {
