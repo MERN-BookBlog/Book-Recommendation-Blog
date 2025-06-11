@@ -1,8 +1,9 @@
 import User from "../models/user.js";
 import bcrypt from "bcryptjs";
+
 import { generateTokenAndSetCookie } from "../utils/generateToken.js";
 import hashPassword from "../utils/hashPassword.js";
-
+import { sendNotification } from "../utils/sendNotification.js";
 export const testController = async (req, res) => {
   res.send("Backend is running ");
 };
@@ -26,6 +27,14 @@ export const signupController = async (req, res) => {
       await newUser.save();
     }
 
+    // notification
+    await sendNotification({
+      type: "welcome",
+      message: `🎉 Welcome ${newUser.username}!`,
+      to: newUser._id,
+      from: null,
+    });
+
     res.status(201).json({ success: true, newUser });
   } catch (err) {
     console.log("Error in Signup Controller : ", err);
@@ -47,8 +56,15 @@ export const loginController = async (req, res) => {
         .status(401)
         .json({ success: false, errors: "Invalid credentials" });
 
-    generateTokenAndSetCookie(user._id, res);
+    generateTokenAndSetCookie(user.userId, res);
 
+    // notification
+    await sendNotification({
+      type: "login_alert",
+      message: `👋 Welcome back! You’ve successfully logged in.`,
+      to: user._id,
+      from: null, // system message
+    });
     res.status(200).json({ success: true, message: "Login successfully !" });
   } catch (err) {
     console.log("Error in loginController : ", err.message);

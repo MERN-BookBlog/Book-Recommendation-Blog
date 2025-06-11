@@ -1,5 +1,6 @@
 import Book from "../models/book.model.js";
-import User from "../models/user.js";
+import User from "../models/user.model.js";
+import { sendNotification } from "../utils/sendNotification.js";
 
 export const addBook = async (req, res) => {
   try {
@@ -24,13 +25,25 @@ export const addBook = async (req, res) => {
     const newBook = new Book({
       title: title.trim(),
       author: author.trim(),
-      genre: genre.trim(),
+      genre: genre.map((g) => g.trim()),
       description: description.trim(),
       image,
       publishYear,
     });
 
     const savedBook = await newBook.save();
+
+    // Notification
+    const users = await User.find();
+
+    for (const user of users) {
+      await sendNotification({
+        type: "new_book_added",
+        message: `📘 A new book "${newBook.title}" has been added. Check it out!`,
+        to: user._id,
+        bookId: newBook._id,
+      });
+    }
 
     res.status(201).json({
       success: true,
